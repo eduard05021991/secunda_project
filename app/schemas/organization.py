@@ -1,5 +1,7 @@
 from pydantic import BaseModel
-from typing import List
+from typing import List, Optional
+from .building import Building
+from .activity import Activity
 
 
 class PhoneNumberBase(BaseModel):
@@ -10,8 +12,7 @@ class PhoneNumberCreate(PhoneNumberBase):
 
 class PhoneNumber(PhoneNumberBase):
     id: int
-    organization_id: int
-
+    
     class Config:
         from_attributes = True
 
@@ -26,7 +27,9 @@ class OrganizationCreate(OrganizationBase):
 
 class Organization(OrganizationBase):
     id: int
-    phone_numbers: List[PhoneNumber] = []
-
+    building: Building
+    phone_numbers: List[PhoneNumber]
+    activities: List[Activity]
+    
     class Config:
         from_attributes = True

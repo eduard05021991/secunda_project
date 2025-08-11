@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from ..models.organization import Organization as OrganizationModel, PhoneNumber
-from ..models.activity import OrganizationActivity
+from ..models.models import Organization as OrganizationModel, PhoneNumber
+from ..models.models import OrganizationActivity
 from ..schemas.organization import OrganizationCreate, Organization
 from fastapi import HTTPException
 

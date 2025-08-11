@@ -1,0 +1,7 @@
+pycache/*
+*.pyc
+secunda_venv/*
+.env
+*.log
+TEMP_OR_TRASH/*
+postgres_data/*

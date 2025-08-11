@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from ..models.activity import Activity as ActivityModel
+from ..models.models import Activity as ActivityModel
 from ..schemas.activity import ActivityCreate, Activity
 from fastapi import HTTPException
 

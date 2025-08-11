@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from ..models.building import Building as BuildingModel
+from ..models.models import Building as BuildingModel
 from ..schemas.building import BuildingCreate, Building
 
 
