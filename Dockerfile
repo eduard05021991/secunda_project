@@ -11,10 +11,10 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Копирование всей папки app в /app
-COPY app/ .
+COPY src/ .
 
 # Копирование остальных файлов
-COPY alembic.ini .
+COPY src/alembic.ini .
 #COPY sql/ sql/
 COPY .dockerignore .
 COPY .gitignore .

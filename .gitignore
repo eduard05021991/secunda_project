@@ -5,3 +5,8 @@ secunda_venv/*
 *.log
 TEMP_OR_TRASH/*
 postgres_data/*
+venv/
+env/
+.vscode/
+.idea/
+resources/
