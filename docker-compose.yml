@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - ./sql:/app/sql
+    command: >
+      bash -c "wait-for-it db:5432 --timeout=120 &&
+               alembic upgrade head &&
+               psql -h db -p 5432 -U user123456 -d secunda_db -f /app/sql/seed_data.sql &&
+               uvicorn app.main:app --host 0.0.0.0 --port 8000"
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user123456
+      POSTGRES_PASSWORD: user123456
+      POSTGRES_DB: secunda_db
+    ports:
+      - "1234:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: ["postgres", "-c", "listen_addresses=*"]
+volumes:
+  postgres_data:
