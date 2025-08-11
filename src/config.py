@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-DEFAULT_ENV_PATH = '/Users/dm.m.konovalov/PycharmProjects/secunda_project/.env'
+DEFAULT_ENV_PATH = '.env'
 
 
 class Settings(BaseSettings):
