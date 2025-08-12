@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-DEFAULT_ENV_PATH = '.env'
+DEFAULT_ENV_PATH = '/home/garrip91/programming/test_tasks/secunda/.env'
 
 
 class Settings(BaseSettings):

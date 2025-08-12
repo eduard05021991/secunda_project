@@ -7,6 +7,7 @@ from models import (
     PhoneNumber
 )
 
+
 all_models = [
     Base,
     Activity,

@@ -15,7 +15,6 @@ COPY src/ .
 
 # Копирование остальных файлов
 COPY src/alembic.ini .
-#COPY sql/ sql/
 COPY .dockerignore .
 COPY .gitignore .
 

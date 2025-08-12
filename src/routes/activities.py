@@ -9,8 +9,8 @@ from database import get_db
 from dependencies import verify_api_key
 from schemas.activity import Activity, ActivityCreate
 
-router = APIRouter()
 
+router = APIRouter()
 
 @router.post("/", response_model=Activity, summary="Создать новую деятельность")
 def create_activity_endpoint(activity: ActivityCreate,

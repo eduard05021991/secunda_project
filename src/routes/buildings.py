@@ -9,8 +9,8 @@ from database import get_db
 from dependencies import verify_api_key
 from schemas.building import Building, BuildingCreate
 
-router = APIRouter()
 
+router = APIRouter()
 
 @router.post("/", response_model=Building, summary="Создать новое здание")
 def create_building_endpoint(building: BuildingCreate,
@@ -19,7 +19,6 @@ def create_building_endpoint(building: BuildingCreate,
     """Создает новое здание с указанным адресом и координатами."""
     return create_building(db, building)
 
-
 @router.get("/", response_model=List[Building],
             summary="Получить список зданий")
 def get_buildings_endpoint(skip: int = 0, limit: int = 100,
@@ -27,7 +26,6 @@ def get_buildings_endpoint(skip: int = 0, limit: int = 100,
                            api_key: str = Depends(verify_api_key)):
     """Возвращает список всех зданий с пагинацией."""
     return get_buildings(db, skip, limit)
-
 
 @router.get("/{building_id}", response_model=Building,
             summary="Получить здание по ID")
@@ -39,7 +37,6 @@ def get_building_endpoint(building_id: int, db: Session = Depends(get_db),
         raise HTTPException(status_code=404, detail="Building not found")
     return building
 
-
 @router.put("/{building_id}", response_model=Building,
             summary="Обновить здание")
 def update_building_endpoint(building_id: int, building: BuildingCreate,
@@ -50,7 +47,6 @@ def update_building_endpoint(building_id: int, building: BuildingCreate,
     if not updated_building:
         raise HTTPException(status_code=404, detail="Building not found")
     return updated_building
-
 
 @router.delete("/{building_id}", summary="Удалить здание")
 def delete_building_endpoint(building_id: int, db: Session = Depends(get_db),

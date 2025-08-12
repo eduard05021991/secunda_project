@@ -14,8 +14,8 @@ from database import get_db
 from dependencies import verify_api_key
 from schemas.organization import Organization, OrganizationCreate
 
-router = APIRouter()
 
+router = APIRouter()
 
 @router.post("/", response_model=Organization,
              summary="Создать новую организацию")
@@ -25,7 +25,6 @@ def create_organization_endpoint(organization: OrganizationCreate,
     """Создает новую организацию с указанным названием, зданием, номерами телефонов и деятельностями."""
     return create_organization(db, organization)
 
-
 @router.get("/", response_model=List[Organization],
             summary="Получить список организаций")
 def get_organizations_endpoint(skip: int = 0, limit: int = 100,
@@ -33,7 +32,6 @@ def get_organizations_endpoint(skip: int = 0, limit: int = 100,
                                api_key: str = Depends(verify_api_key)):
     """Возвращает список всех организаций с пагинацией."""
     return get_organizations(db, skip, limit)
-
 
 @router.get("/{organization_id}", response_model=Organization,
             summary="Получить организацию по ID")
@@ -45,7 +43,6 @@ def get_organization_endpoint(organization_id: int,
     if not organization:
         raise HTTPException(status_code=404, detail="Organization not found")
     return organization
-
 
 @router.put("/{organization_id}", response_model=Organization,
             summary="Обновить организацию")
@@ -60,7 +57,6 @@ def update_organization_endpoint(organization_id: int,
         raise HTTPException(status_code=404, detail="Organization not found")
     return updated_organization
 
-
 @router.delete("/{organization_id}", summary="Удалить организацию")
 def delete_organization_endpoint(organization_id: int,
                                  db: Session = Depends(get_db),
@@ -71,7 +67,6 @@ def delete_organization_endpoint(organization_id: int,
         raise HTTPException(status_code=404, detail="Organization not found")
     return {"detail": "Organization deleted"}
 
-
 @router.get("/by_building/{building_id}", response_model=List[Organization],
             summary="Получить организации по зданию")
 def get_organizations_by_building_endpoint(building_id: int,
@@ -81,7 +76,6 @@ def get_organizations_by_building_endpoint(building_id: int,
     """Возвращает список организаций, находящихся в указанном здании."""
     return get_organizations_by_building(db, building_id)
 
-
 @router.get("/by_activity/{activity_id}", response_model=List[Organization],
             summary="Получить организации по деятельности")
 def get_organizations_by_activity_endpoint(activity_id: int,
@@ -90,7 +84,6 @@ def get_organizations_by_activity_endpoint(activity_id: int,
                                                verify_api_key)):
     """Возвращает список организаций, связанных с указанной деятельностью."""
     return get_organizations_by_activity(db, activity_id)
-
 
 @router.get("/by_activity_tree/{activity_id}",
             response_model=List[Organization],
@@ -102,7 +95,6 @@ def get_organizations_by_activity_tree_endpoint(activity_id: int,
     """Возвращает список организаций, связанных с указанной деятельностью и всеми ее поддеятельностями."""
     return get_organizations_by_activity_tree(db, activity_id)
 
-
 @router.get("/by_name/", response_model=List[Organization],
             summary="Поиск организаций по названию")
 def search_organizations_by_name_endpoint(name: str,
@@ -111,7 +103,6 @@ def search_organizations_by_name_endpoint(name: str,
                                               verify_api_key)):
     """Возвращает список организаций, содержащих указанную строку в названии."""
     return search_organizations_by_name(db, name)
-
 
 @router.get("/by_location/", response_model=List[Organization],
             summary="Получить организации по местоположению")
