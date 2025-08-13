@@ -2,8 +2,8 @@ from typing import List
 
 from pydantic import BaseModel
 
-from .activity import Activity
-from .building import Building
+from api.v1.schema.activity import Activity
+from api.v1.building.building import Building
 
 
 class PhoneNumberBase(BaseModel):

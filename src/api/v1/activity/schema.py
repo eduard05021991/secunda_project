@@ -4,13 +4,16 @@ from pydantic import BaseModel
 
 
 class ActivityBase(BaseModel):
+    id: int
     name: str
     parent_id: Optional[int] = None
     level: int = 1
 
 
-class ActivityCreate(ActivityBase):
-    pass
+class ActivityCreate(BaseModel):
+    name: str
+    parent_id: int | None = None
+    level: int = 1
 
 
 class Activity(ActivityBase):
