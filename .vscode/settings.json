@@ -1,5 +1,0 @@
-{
-    "python.defaultInterpreterPath": "${workspaceFolder}/secunda_venv/bin/python"  // Linux/Mac
-    // или для Windows:
-    // "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe"
-}
