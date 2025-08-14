@@ -1,3 +1,6 @@
+# src/api/v1/organization/model.py
+from __future__ import annotations # откладывает разрешение имён классов
+
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 

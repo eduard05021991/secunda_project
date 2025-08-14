@@ -1,3 +1,6 @@
+# src/api/v1/building/model.py
+from __future__ import annotations # откладывает разрешение имён классов
+
 from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.orm import relationship
 
@@ -12,4 +15,8 @@ class Building(Base):
     latitude = Column(Float, nullable=False)
     longitude = Column(Float, nullable=False)
 
-    organizations = relationship("Organization", back_populates="building")
+    # Связь с организациями (lazy='select' по умолчанию)
+    organizations = relationship(
+        "Organization", 
+        back_populates="building"
+    )

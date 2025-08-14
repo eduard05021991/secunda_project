@@ -1,3 +1,4 @@
+# .gitignore
 pycache/*
 *.pyc
 secunda_venv/*

@@ -1,14 +1,29 @@
+# docker-compose.yml
 services:
   db:
     image: postgres:15
+    env_file:
+      - .env
     environment:
-      POSTGRES_USER: db_user_login
-      POSTGRES_PASSWORD: db_user_password
-      POSTGRES_DB: secunda_db
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_BASENAME}
     ports:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # env_file:
+      # - .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+      # - "8080:8000"
 
 volumes:
   postgres_data:

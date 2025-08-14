@@ -1,1 +1,2 @@
+# src/db/migrations/README
 Generic single-database configuration with an async dbapi.

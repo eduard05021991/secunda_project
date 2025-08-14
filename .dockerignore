@@ -1,3 +1,4 @@
+# .dockerignore
 pycache/*
 *.pyc
 secunda_venv/*

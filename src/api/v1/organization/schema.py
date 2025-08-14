@@ -1,9 +1,10 @@
+# src/api/v1/organization/schema.py
 from typing import List
 
 from pydantic import BaseModel
 
-from .activity import Activity
-from .building import Building
+from api.v1.activity.schema import ActivityBase
+from api.v1.building.schema import BuildingBase
 
 
 class PhoneNumberBase(BaseModel):
@@ -34,9 +35,9 @@ class OrganizationCreate(OrganizationBase):
 
 class Organization(OrganizationBase):
     id: int
-    building: Building
+    building: BuildingBase
     phone_numbers: List[PhoneNumber]
-    activities: List[Activity]
+    activities: List[ActivityBase]
 
     class Config:
         from_attributes = True

@@ -1,3 +1,4 @@
+# src/db/session.py
 from contextlib import asynccontextmanager
 from typing import AsyncGenerator
 
@@ -11,9 +12,11 @@ from config import settings
 
 engine = create_async_engine(settings.dsn)
 Base = declarative_base()
+import db.models  # регистрируем все модели при первом же импорте сессии
 async_session = sessionmaker(
     engine, class_=AsyncSession, expire_on_commit=False
 )
+
 
 @asynccontextmanager
 async def get_async_session() -> AsyncGenerator[AsyncSession, None]:

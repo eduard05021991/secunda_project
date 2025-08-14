@@ -1,3 +1,4 @@
+# Dockerfile
 FROM python:3.11-slim
 
 WORKDIR /app
@@ -18,4 +19,4 @@ COPY src/alembic.ini .
 COPY .dockerignore .
 COPY .gitignore .
 
-CMD ["wait-for-it", "db:5432", "--", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["wait-for-it", "db:5432", "--", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -1,0 +1,1 @@
+# src/api/v1/activity/__init__.py
